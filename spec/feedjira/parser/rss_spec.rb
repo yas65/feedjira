@@ -1,28 +1,28 @@
 require File.join(File.dirname(__FILE__), %w[.. .. spec_helper])
 
-describe Feedjira::Parser::RSS do
+describe Feedjira::Parser::Rss do
   describe "#will_parse?" do
-    it "should return true for an RSS feed" do
-      Feedjira::Parser::RSS.should be_able_to_parse(sample_rss_feed)
+    it "should return true for an Rss feed" do
+      Feedjira::Parser::Rss.should be_able_to_parse(sample_rss_feed)
     end
 
     # this is no longer true. combined rdf and rss into one
     # it "should return false for an rdf feed" do
-    #   Feedjira::RSS.should_not be_able_to_parse(sample_rdf_feed)
+    #   Feedjira::Rss.should_not be_able_to_parse(sample_rdf_feed)
     # end
 
     it "should return false for an atom feed" do
-      Feedjira::Parser::RSS.should_not be_able_to_parse(sample_atom_feed)
+      Feedjira::Parser::Rss.should_not be_able_to_parse(sample_atom_feed)
     end
 
     it "should return false for an rss feedburner feed" do
-      Feedjira::Parser::RSS.should_not be_able_to_parse(sample_rss_feed_burner_feed)
+      Feedjira::Parser::Rss.should_not be_able_to_parse(sample_rss_feed_burner_feed)
     end
   end
 
   describe "parsing" do
     before(:each) do
-      @feed = Feedjira::Parser::RSS.parse(sample_rss_feed)
+      @feed = Feedjira::Parser::Rss.parse(sample_rss_feed)
     end
 
     it "should parse the version" do

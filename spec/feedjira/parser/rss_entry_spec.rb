@@ -1,17 +1,17 @@
 # coding: utf-8
 require File.join(File.dirname(__FILE__), %w[.. .. spec_helper])
 
-describe Feedjira::Parser::RSSEntry do
+describe Feedjira::Parser::RssEntry do
   before(:each) do
-    # I don't really like doing it this way because these unit test should only rely on RSSEntry,
+    # I don't really like doing it this way because these unit test should only rely on RssEntry,
     # but this is actually how it should work. You would never just pass entry xml straight to the AtomEnry
-    @entry = Feedjira::Parser::RSS.parse(sample_rss_feed).entries.first
+    @entry = Feedjira::Parser::Rss.parse(sample_rss_feed).entries.first
   end
 
   after(:each) do
     # We change the title in one or more specs to test []=
     if @entry.title != "Nokogiri’s Slop Feature"
-      @entry.title = Feedjira::Parser::RSS.parse(sample_rss_feed).entries.first.title
+      @entry.title = Feedjira::Parser::Rss.parse(sample_rss_feed).entries.first.title
     end
   end
 
