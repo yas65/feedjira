@@ -1,5 +1,7 @@
 module Feedjira
   class Parser
+    class ParserNotFoundError < StandardError; end
+
     def self.parse(xml)
       new(xml).parse
     end
@@ -11,13 +13,14 @@ module Feedjira
     end
 
     def parse
+      raise ParserNotFoundError unless parser
       parser.parse xml
     end
 
     private
 
     def parser
-      default_parsers.find { |parser| parser.able_to_parse? xml }
+      @parser ||= default_parsers.find { |parser| parser.able_to_parse? xml }
     end
 
     def default_parsers
