@@ -1,33 +1,13 @@
 module Feedjira
   class Feed
-    attr_reader :parser
+    attr_reader :title, :description, :url, :entries, :doc
 
-    def initialize(parser)
-      @parser = parser
-    end
-
-    def title
-      parser.title
-    end
-
-    def description
-      parser.description
-    end
-
-    def url
-      parser.url
-    end
-
-    def links
-      parser.links
-    end
-
-    def hubs
-      parser.hubs
-    end
-
-    def entries
-      parser.entries
+    def initialize(doc)
+      @doc = doc
+      @title = doc.title
+      @description = doc.description
+      @url = doc.url
+      @entries = doc.entries
     end
   end
 end
