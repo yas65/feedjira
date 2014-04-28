@@ -24,7 +24,7 @@ module Feedjira
     end
 
     def default_parsers
-      [Atom, Rss]
+      Feedjira.configuration.parsers
     end
   end
 end

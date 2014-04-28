@@ -44,5 +44,11 @@ describe Feedjira do
       ret = Feedjira.config {}
       expect(ret).to equal(Feedjira.configuration)
     end
+
+    it "sets parsers" do
+      parser = Class.new
+      Feedjira.config { |c| c.parsers = [parser] }
+      expect(Feedjira.configuration.parsers).to eq [parser]
+    end
   end
 end
