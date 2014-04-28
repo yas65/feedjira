@@ -15,7 +15,7 @@ require 'feedjira/parser/atom_entry'
 require 'feedjira/parser/atom'
 
 module Feedjira
-  def self.fetch_and_parse(*args)
-    Feed.new Parser.parse Fetcher.fetch *args
+  def self.fetch_and_parse(url)
+    Feed.new Parser.parse Fetcher.fetch url
   end
 end

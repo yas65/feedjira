@@ -4,16 +4,21 @@ module Feedjira
       new(*args).fetch
     end
 
-    attr_reader :url, :conn
+    attr_reader :url
 
-    def initialize(url, conn=Faraday.new)
+    def initialize(url)
       @url = url
-      @conn = conn
     end
 
     def fetch
       response = conn.get url
       response.body
+    end
+
+    private
+
+    def conn
+      Faraday.default_connection
     end
   end
 end

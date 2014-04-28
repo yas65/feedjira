@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Feedjira do
   it 'fetches and parses an Atom feed' do
-    feed = Feedjira.fetch_and_parse 'http://feedjira.com/blog/feed.xml', conn
+    feed = Feedjira.fetch_and_parse 'http://feedjira.com/blog/feed.xml'
     expect(feed.title).to eq 'Feedjira Blog'
     expect(feed.description).to eq 'A Blog for Feedjira'
     expect(feed.url).to eq 'http://feedjira.com/blog'
@@ -21,7 +21,7 @@ describe Feedjira do
   end
 
   it 'fetches and parses an RSS feed' do
-    feed = Feedjira.fetch_and_parse 'http://tenderlovemaking.com/feed/', conn
+    feed = Feedjira.fetch_and_parse 'http://tenderlovemaking.com/feed/'
     expect(feed.title).to eq 'Tender Lovemaking'
     expect(feed.description).to eq 'The act of making love, tenderly.'
     expect(feed.url).to eq 'http://tenderlovemaking.com'
