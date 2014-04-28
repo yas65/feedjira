@@ -7,7 +7,7 @@ module Feedjira
       @title = doc.title
       @description = doc.description
       @url = doc.url
-      @entries = doc.entries
+      @entries = doc.entries.map { |e| Entry.new e }
     end
   end
 end

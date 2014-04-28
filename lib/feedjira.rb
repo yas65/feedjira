@@ -4,6 +4,7 @@ require 'loofah'
 
 require 'feedjira/core_ext'
 require 'feedjira/feed'
+require 'feedjira/entry'
 require 'feedjira/fetcher'
 require 'feedjira/parser'
 require 'feedjira/feed_entry_utilities'
