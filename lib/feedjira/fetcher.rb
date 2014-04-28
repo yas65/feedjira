@@ -1,7 +1,7 @@
 module Feedjira
   class Fetcher
-    def self.fetch(*args)
-      new(*args).fetch
+    def self.fetch(url)
+      new(url).fetch
     end
 
     attr_reader :url
