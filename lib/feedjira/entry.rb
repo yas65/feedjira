@@ -15,5 +15,9 @@ module Feedjira
       @title = fragment.title
       @url = fragment.url
     end
+
+    def inspect
+      sprintf('#<%s:0x%x @url="%s" @title="%s" ...>', self.class, object_id, @url, @title)
+    end
   end
 end
