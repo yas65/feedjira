@@ -38,4 +38,11 @@ describe Feedjira do
     expect(entry.title).to eq 'Nokogiri’s Slop Feature'
     expect(entry.url).to eq 'http://tenderlovemaking.com/2008/12/04/nokogiris-slop-feature/'
   end
+
+  describe "config with a block" do
+    it "returns the configuration" do
+      ret = Feedjira.config {}
+      expect(ret).to equal(Feedjira.configuration)
+    end
+  end
 end

@@ -14,8 +14,19 @@ require 'feedjira/parser/rss'
 require 'feedjira/parser/atom_entry'
 require 'feedjira/parser/atom'
 
+require 'feedjira/configuration'
+
 module Feedjira
   def self.fetch_and_parse(url)
     Feed.new Parser.parse Fetcher.fetch url
+  end
+
+  def self.config
+    yield configuration
+    configuration
+  end
+
+  def self.configuration
+    @configuration ||= Configuration.new
   end
 end
