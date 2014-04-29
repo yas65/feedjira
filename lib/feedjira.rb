@@ -1,6 +1,5 @@
 require 'sax-machine'
 require 'faraday'
-require 'loofah'
 
 require 'feedjira/core_ext'
 require 'feedjira/error'

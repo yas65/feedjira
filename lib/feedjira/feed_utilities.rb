@@ -70,10 +70,6 @@ module Feedjira
       end
     end
 
-    def sanitize_entries!
-      entries.each {|entry| entry.sanitize!}
-    end
-
     private
 
     def find_new_entries_for(feed)

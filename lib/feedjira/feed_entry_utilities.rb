@@ -1,6 +1,5 @@
 module Feedjira
   module FeedEntryUtilities
-
     include Enumerable
 
     def published
@@ -36,14 +35,6 @@ module Feedjira
       @updated = parsed if !@updated || parsed > @updated
     end
 
-    def sanitize!
-      %w[title author summary content image].each do |name|
-        if self.respond_to?(name) && self.send(name).respond_to?(:sanitize!)
-          self.send(name).send :sanitize!
-        end
-      end
-    end
-
     alias_method :last_modified, :published
 
     def each
@@ -61,6 +52,5 @@ module Feedjira
     def []=(field, value)
       self.instance_variable_set("@#{field.to_s}", value)
     end
-
   end
 end

@@ -1,3 +1,5 @@
+require 'loofah'
+
 module Feedjira
   class Entry
     attr_reader :author, :categories, :content, :entry_id,
@@ -5,19 +7,26 @@ module Feedjira
 
     def initialize(fragment)
       @fragment = fragment
-      @author = fragment.author
-      @categories = fragment.categories
-      @content = fragment.content
-      @entry_id = fragment.entry_id
-      @image = fragment.image
+
+      @entry_id  = fragment.entry_id
       @published = fragment.published
-      @summary = fragment.summary
-      @title = fragment.title
-      @url = fragment.url
+      @url       = fragment.url
+
+      @author  = scrub fragment.author
+      @content = scrub fragment.content
+      @image   = scrub fragment.image
+      @summary = scrub fragment.summary
+      @title   = scrub fragment.title
+      @categories = (fragment.categories || []).map {|c| scrub c}
     end
 
     def inspect
       sprintf('#<%s:0x%x @url="%s" @title="%s" ...>', self.class, object_id, @url, @title)
+    end
+
+    def scrub(string)
+      return unless string
+      Loofah.scrub_fragment(string, :prune).to_s.strip
     end
   end
 end
