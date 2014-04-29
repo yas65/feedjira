@@ -1,6 +1,5 @@
 module Feedjira
   class Parser
-    class ParserNotFoundError < StandardError; end
 
     def self.parse(*args)
       new(*args).parse
@@ -15,7 +14,7 @@ module Feedjira
     end
 
     def parse
-      raise ParserNotFoundError unless parser
+      raise ParserNotFoundError, "Unable to parse with these parsers: #@parsers" unless parser
       parser.parse xml
     end
 

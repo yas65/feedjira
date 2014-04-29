@@ -8,7 +8,7 @@ describe Feedjira::Parser do
       let(:xml) { '<xml></xml>' }
 
       it 'raises an error' do
-        expect { parser.parse }.to raise_error Feedjira::Parser::ParserNotFoundError
+        expect { parser.parse }.to raise_error Feedjira::ParserNotFoundError
       end
     end
 
