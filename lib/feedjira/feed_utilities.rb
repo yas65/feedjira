@@ -30,11 +30,8 @@ module Feedjira
     end
 
     def last_modified
-      @last_modified ||= begin
-        entry = entries.reject {|e| e.published.nil? }.sort_by { |entry| entry.published if entry.published }.last
-        entry ? entry.published : nil
-      end
+      return @last_modified if defined?(@last_modified)
+      @last_modified = entries.map {|e| e.published }.compact.sort.last
     end
-
   end
 end
