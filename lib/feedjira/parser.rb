@@ -10,6 +10,7 @@ module Feedjira
 
     def initialize(xml, options={})
       @xml = xml
+      @parsers = options[:parsers] || []
       @parser = options[:parser]
     end
 
@@ -21,11 +22,7 @@ module Feedjira
     private
 
     def parser
-      @parser ||= default_parsers.find { |parser| parser.able_to_parse? xml }
-    end
-
-    def default_parsers
-      Feedjira.configuration.parsers
+      @parser ||= @parsers.find { |parser| parser.able_to_parse? xml }
     end
   end
 end

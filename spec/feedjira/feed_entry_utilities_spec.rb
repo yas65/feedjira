@@ -23,12 +23,12 @@ describe Feedjira::FeedUtilities do
 
   describe "sanitizing" do
     before(:each) do
-      @feed = Feedjira::Parser.parse(sample_atom_feed)
+      @feed = Feedjira::Parser.parse(sample_atom_feed, parser: Feedjira::Parser::Atom)
       @entry = @feed.entries.first
     end
 
     it "doesn't fail when no elements are defined on includer" do
-      expect { @klass.new.sanitize!  }.to_not raise_error
+      expect { @klass.new.sanitize! }.to_not raise_error
     end
 
     it "should provide a sanitized title" do
