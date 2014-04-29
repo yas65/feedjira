@@ -26,37 +26,4 @@ describe Feedjira::FeedUtilities do
       end
     end
   end
-
-  describe "instance methods" do
-    it "should provide an etag accessor" do
-      feed = @klass.new
-      feed.etag = "foo"
-      feed.etag.should == "foo"
-    end
-
-    it "should provide a last_modified accessor" do
-      feed = @klass.new
-      time = Time.now
-      feed.last_modified = time
-      feed.last_modified.should == time
-      feed.last_modified.class.should == Time
-    end
-
-    it "should return a last_modified value from the entry with the most recent published date if the last_modified date hasn't been set" do
-      feed = Feedjira::Parser::Atom.new
-      entry =Feedjira::Parser::AtomEntry.new
-      entry.published = Time.now.to_s
-      feed.entries << entry
-      feed.last_modified.should == entry.published
-    end
-
-    it "should not throw an error if one of the entries has published date of nil" do
-      feed = Feedjira::Parser::Atom.new
-      entry = Feedjira::Parser::AtomEntry.new
-      entry.published = Time.now.to_s
-      feed.entries << entry
-      feed.entries << Feedjira::Parser::AtomEntry.new
-      feed.last_modified.should == entry.published
-    end
-  end
 end
