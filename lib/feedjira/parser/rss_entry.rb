@@ -28,6 +28,10 @@ module Feedjira
 
       element :guid, as: :entry_id
       element :"dc:identifier", as: :entry_id
+
+      def updated
+        published
+      end
     end
   end
 end

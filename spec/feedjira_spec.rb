@@ -16,6 +16,7 @@ describe Feedjira do
       expect(entry.entry_id).to eq 'http://feedjira.com/blog/2014/03/17/feedjira-goes-one-point-oh.html'
       expect(entry.image).to eq nil
       expect(entry.published).to eq Time.parse('2014-03-17 00:00:00 UTC')
+      expect(entry.updated).to eq Time.parse('2014-03-17 13:02:45 UTC')
       expect(entry.summary).to eq nil
       expect(entry.title).to eq 'Feedjira Goes One-Point-Oh'
       expect(entry.url).to eq 'http://feedjira.com/blog/2014/03/17/feedjira-goes-one-point-oh.html'
@@ -35,6 +36,7 @@ describe Feedjira do
       expect(entry.entry_id).to eq 'http://tenderlovemaking.com/?p=198'
       expect(entry.image).to eq nil
       expect(entry.published).to eq Time.parse('2008-12-04 17:17:49 UTC')
+      expect(entry.updated).to eq Time.parse('2008-12-04 17:17:49 UTC')
       expect(entry.summary).to match /It lets you sloppily explore documents/
       expect(entry.title).to eq 'Nokogiri’s Slop Feature'
       expect(entry.url).to eq 'http://tenderlovemaking.com/2008/12/04/nokogiris-slop-feature/'

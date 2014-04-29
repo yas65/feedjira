@@ -3,13 +3,15 @@ require 'loofah'
 module Feedjira
   class Entry
     attr_reader :author, :categories, :content, :entry_id,
-      :image, :published, :summary, :title, :url, :fragment
+      :image, :published, :summary, :title, :updated, :url,
+      :fragment
 
     def initialize(fragment)
       @fragment = fragment
 
       @entry_id  = fragment.entry_id
       @published = fragment.published
+      @updated   = fragment.updated
       @url       = fragment.url
 
       @author  = scrub fragment.author

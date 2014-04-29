@@ -1,19 +1,20 @@
 require 'spec_helper'
 
 describe Feedjira::Entry do
-  describe "sanitizing" do
-    def fragment(opts={})
-      double({author: nil,
-             categories: nil,
-             content: nil,
-             entry_id: nil,
-             image: nil,
-             published: nil,
-             summary: nil,
-             title: nil,
-             url: nil}.merge(opts))
-    end
+  def fragment(opts={})
+    double({author: nil,
+            categories: nil,
+            content: nil,
+            entry_id: nil,
+            image: nil,
+            published: nil,
+            updated: nil,
+            summary: nil,
+            title: nil,
+            url: nil}.merge(opts))
+  end
 
+  describe "sanitizing" do
     context "with an unsafe attribute" do
       it "leaves nils alone" do
         entry = Feedjira::Entry.new fragment(image: nil)
