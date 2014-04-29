@@ -44,7 +44,7 @@ describe Feedjira::Parser::RssEntry do
   end
 
   it "should parse the guid as id" do
-    @entry.id.should == "http://tenderlovemaking.com/?p=198"
+    @entry.entry_id.should == "http://tenderlovemaking.com/?p=198"
   end
 
   it "should support each" do

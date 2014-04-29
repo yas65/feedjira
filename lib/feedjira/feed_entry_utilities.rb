@@ -7,12 +7,6 @@ module Feedjira
     end
     alias_method :last_modified, :published
 
-    ##
-    # Returns the id of the entry or its url if not id is present, as some formats don't support it
-    def id
-      @entry_id ||= @url
-    end
-
     def each
       @rss_fields ||= self.instance_variables
 

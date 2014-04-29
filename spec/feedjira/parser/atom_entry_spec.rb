@@ -44,7 +44,7 @@ describe Feedjira::Parser::AtomEntry do
   end
 
   it "should parse the id" do
-    @entry.id.should == "tag:typepad.com,2003:post-61484736"
+    @entry.entry_id.should == "tag:typepad.com,2003:post-61484736"
   end
 
   it "should support each" do
