@@ -48,4 +48,30 @@ describe Feedjira::Entry do
       end
     end
   end
+
+  describe "date parsing" do
+    it "parses ISO 8601 formatted datetimes into Time" do
+      published = "2008-02-20T8:05:00-010:00"
+      entry = Feedjira::Entry.new fragment(published: published)
+      expect(entry.published).to eq(Time.parse("Wed Feb 20 18:05:00 UTC 2008"))
+    end
+
+    it "parses ISO 8601 with milliseconds into Time" do
+      published = "2013-09-17T08:20:13.931-04:00"
+      entry = Feedjira::Entry.new fragment(published: published)
+      expect(entry.published).to eq(Time.parse("Tue Sep 17 12:20:13.931 UTC 2013"))
+    end
+
+    it "returns Times at UTC offset" do
+      published = Time.parse "2014-03-17T04:00:00-05:00"
+      entry = Feedjira::Entry.new fragment(published: published)
+      expect(entry.published).to eq(Time.parse("Wed Mar 17 09:00:00 UTC 2014"))
+    end
+
+    it "returns nil with an unparsable datetime" do
+      published = "hello"
+      entry = Feedjira::Entry.new fragment(published: published)
+      expect(entry.published).to be_nil
+    end
+  end
 end

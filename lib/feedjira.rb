@@ -1,7 +1,6 @@
 require 'sax-machine'
 require 'faraday'
 
-require 'feedjira/core_ext'
 require 'feedjira/error'
 require 'feedjira/feed'
 require 'feedjira/entry'

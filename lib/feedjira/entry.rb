@@ -1,4 +1,5 @@
 require 'loofah'
+require 'time'
 
 module Feedjira
   class Entry
@@ -10,8 +11,8 @@ module Feedjira
       @fragment = fragment
 
       @entry_id  = fragment.entry_id
-      @published = fragment.published
-      @updated   = fragment.updated
+      @published = parse_datetime fragment.published
+      @updated   = parse_datetime fragment.updated
       @url       = fragment.url
 
       @author  = scrub fragment.author
@@ -29,6 +30,15 @@ module Feedjira
     def scrub(string)
       return unless string
       Loofah.scrub_fragment(string, :prune).to_s.strip
+    end
+
+    def parse_datetime(string)
+      return string.utc if string.respond_to?(:utc)
+      begin
+        DateTime.parse(string).to_time.utc
+      rescue => e
+        nil
+      end
     end
   end
 end

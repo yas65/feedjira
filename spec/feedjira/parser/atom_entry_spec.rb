@@ -32,7 +32,7 @@ describe Feedjira::Parser::AtomEntry do
   end
 
   it "should parse the published date" do
-    @entry.published.should == Time.parse_safely("Fri Jan 16 18:21:00 UTC 2009")
+    @entry.published.should == "2009-01-16T10:21:00-08:00"
   end
 
   it "should parse the categories" do
@@ -40,7 +40,7 @@ describe Feedjira::Parser::AtomEntry do
   end
 
   it "should parse the updated date" do
-    @entry.updated.should == Time.parse_safely("Fri Jan 16 18:21:00 UTC 2009")
+    @entry.updated.should == "2009-01-16T18:21:00Z"
   end
 
   it "should parse the id" do

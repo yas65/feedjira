@@ -36,7 +36,7 @@ describe Feedjira::Parser::RssEntry do
   end
 
   it "should parse the published date" do
-    @entry.published.should == Time.parse_safely("Thu Dec 04 17:17:49 UTC 2008")
+    @entry.published.should == "Thu, 04 Dec 2008 17:17:49 +0000"
   end
 
   it "should parse the categories" do
