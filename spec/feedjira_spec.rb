@@ -13,7 +13,7 @@ describe Feedjira do
       expect(entry.author).to eq 'Jon Allured'
       expect(entry.categories).to eq []
       expect(entry.content).to match /My request was totally out of the blue/
-      expect(entry.entry_id).to eq 'http://feedjira.com/blog/2014/03/17/feedjira-goes-one-point-oh.html'
+      expect(entry.id).to eq 'http://feedjira.com/blog/2014/03/17/feedjira-goes-one-point-oh.html'
       expect(entry.image).to eq nil
       expect(entry.published).to eq Time.parse('2014-03-17 00:00:00 UTC')
       expect(entry.updated).to eq Time.parse('2014-03-17 13:02:45 UTC')
@@ -33,7 +33,7 @@ describe Feedjira do
       expect(entry.author).to eq 'Aaron Patterson'
       expect(entry.categories).to eq %w(computadora nokogiri rails)
       expect(entry.content).to match /This means that a new search is executed for every method call/
-      expect(entry.entry_id).to eq 'http://tenderlovemaking.com/?p=198'
+      expect(entry.id).to eq 'http://tenderlovemaking.com/?p=198'
       expect(entry.image).to eq nil
       expect(entry.published).to eq Time.parse('2008-12-04 17:17:49 UTC')
       expect(entry.updated).to eq Time.parse('2008-12-04 17:17:49 UTC')

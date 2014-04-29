@@ -3,14 +3,14 @@ require 'time'
 
 module Feedjira
   class Entry
-    attr_reader :author, :categories, :content, :entry_id,
+    attr_reader :author, :categories, :content, :id,
       :image, :published, :summary, :title, :updated, :url,
       :fragment
 
     def initialize(fragment)
       @fragment = fragment
 
-      @entry_id  = fragment.entry_id
+      @id        = fragment.entry_id || fragment.url
       @published = parse_datetime fragment.published
       @updated   = parse_datetime fragment.updated
       @url       = fragment.url
