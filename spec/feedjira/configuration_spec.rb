@@ -16,4 +16,18 @@ describe Feedjira::Configuration do
       expect(parsers).to eq [parser]
     end
   end
+
+  describe '#user_agent' do
+    let(:configuration) { Feedjira::Configuration.new }
+    let(:user_agent) { configuration.user_agent }
+
+    it 'returns the default user agent' do
+      expect(user_agent).to match /Feedjira v.* http:\/\/feedjira.com/
+    end
+
+    it 'can be configured' do
+      configuration.user_agent = 'MyApp'
+      expect(user_agent).to eq 'MyApp'
+    end
+  end
 end

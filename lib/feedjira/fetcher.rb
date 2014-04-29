@@ -15,10 +15,10 @@ module Feedjira
       response.body
     end
 
-    private
-
     def conn
-      Faraday.default_connection
+      conn = Faraday.default_connection
+      conn.headers[:user_agent] = Feedjira.configuration.user_agent
+      conn
     end
   end
 end

@@ -63,5 +63,10 @@ describe Feedjira do
       Feedjira.config { |c| c.parsers = [parser] }
       expect(Feedjira.configuration.parsers).to eq [parser]
     end
+
+    it "sets user agent" do
+      Feedjira.config { |c| c.user_agent = 'MyApp' }
+      expect(Feedjira.configuration.user_agent).to eq 'MyApp'
+    end
   end
 end
