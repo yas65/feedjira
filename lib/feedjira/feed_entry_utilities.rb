@@ -2,11 +2,6 @@ module Feedjira
   module FeedEntryUtilities
     include Enumerable
 
-    def published
-      @published ||= @updated
-    end
-    alias_method :last_modified, :published
-
     def each
       @rss_fields ||= self.instance_variables
 
