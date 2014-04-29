@@ -36,15 +36,5 @@ module Feedjira
       end
     end
 
-    def update_attribute(feed, name)
-      old_value, new_value = send(name), feed.send(name)
-
-      if old_value != new_value
-        send("#{name}=", new_value)
-        true
-      else
-        false
-      end
-    end
   end
 end
