@@ -7,6 +7,7 @@ require 'feedjira/feed'
 require 'feedjira/entry'
 require 'feedjira/fetcher'
 require 'feedjira/parser'
+
 require 'feedjira/feed_entry_utilities'
 require 'feedjira/feed_utilities'
 require 'feedjira/parser/rss_entry'
@@ -17,8 +18,9 @@ require 'feedjira/parser/atom'
 require 'feedjira/configuration'
 
 module Feedjira
-  def self.fetch_and_parse(url)
-    Feed.new Parser.parse Fetcher.fetch url
+  def self.fetch_and_parse(url, options={})
+    xml = Fetcher.fetch url
+    Feed.new Parser.parse xml, options.fetch(:parser_options, {})
   end
 
   def self.config

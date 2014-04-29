@@ -2,14 +2,15 @@ module Feedjira
   class Parser
     class ParserNotFoundError < StandardError; end
 
-    def self.parse(xml)
-      new(xml).parse
+    def self.parse(*args)
+      new(*args).parse
     end
 
     attr_reader :xml
 
-    def initialize(xml)
+    def initialize(xml, options={})
       @xml = xml
+      @parser = options[:parser]
     end
 
     def parse

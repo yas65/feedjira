@@ -39,6 +39,17 @@ describe Feedjira do
       expect(entry.title).to eq 'Nokogiri’s Slop Feature'
       expect(entry.url).to eq 'http://tenderlovemaking.com/2008/12/04/nokogiris-slop-feature/'
     end
+
+    context 'with a supplied parser' do
+      it 'uses that parser' do
+        parser = Class.new
+        doc = double(title: nil, description: nil, url: nil, entries: [])
+        parser.should_receive(:parse).and_return(doc)
+        url = 'http://feedjira.com/blog/feed.xml'
+        parser_options = { parser: parser }
+        Feedjira.fetch_and_parse url, parser_options: parser_options
+      end
+    end
   end
 
   describe "config with a block" do
