@@ -47,30 +47,6 @@ describe Feedjira::Parser::AtomEntry do
     @entry.entry_id.should == "tag:typepad.com,2003:post-61484736"
   end
 
-  it "should support each" do
-    @entry.respond_to? :each
-  end
-
-  it "should be able to list out all fields with each" do
-    all_fields = []
-    @entry.each do |field, value|
-      all_fields << field
-    end
-    all_fields.sort == ['author', 'categories', 'content', 'id', 'published', 'summary', 'title', 'url']
-  end
-
-  it "should be able to list out all values with each" do
-    title_value = ''
-    @entry.each do |field, value|
-      title_value = value if field == 'title'
-    end
-    title_value.should == "AWS Job: Architect & Designer Position in Turkey"
-  end
-
-  it "should support checking if a field exists in the entry" do
-    @entry.include?('title') && @entry.include?('author')
-  end
-
   it "should allow access to fields with hash syntax" do
     @entry['title'] == @entry.title
     @entry['title'].should == "AWS Job: Architect & Designer Position in Turkey"
