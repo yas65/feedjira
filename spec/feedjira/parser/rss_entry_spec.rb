@@ -46,16 +46,4 @@ describe Feedjira::Parser::RssEntry do
   it "should parse the guid as id" do
     @entry.entry_id.should == "http://tenderlovemaking.com/?p=198"
   end
-
-  it "should allow access to fields with hash syntax" do
-    @entry['title'] == @entry.title
-    @entry['title'].should == "Nokogiri’s Slop Feature"
-    @entry['author'] == @entry.author
-    @entry['author'].should == "Aaron Patterson"
-  end
-
-  it "should allow setting field values with hash syntax" do
-    @entry['title'] = "Foobar"
-    @entry.title.should == "Foobar"
-  end
 end

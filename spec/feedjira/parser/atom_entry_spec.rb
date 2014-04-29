@@ -46,17 +46,4 @@ describe Feedjira::Parser::AtomEntry do
   it "should parse the id" do
     @entry.entry_id.should == "tag:typepad.com,2003:post-61484736"
   end
-
-  it "should allow access to fields with hash syntax" do
-    @entry['title'] == @entry.title
-    @entry['title'].should == "AWS Job: Architect & Designer Position in Turkey"
-    @entry['author'] == @entry.author
-    @entry['author'].should == "AWS Editor"
-  end
-
-  it "should allow setting field values with hash syntax" do
-    @entry['title'] = "Foobar"
-    @entry.title.should == "Foobar"
-  end
-
 end

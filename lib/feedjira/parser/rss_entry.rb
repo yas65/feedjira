@@ -2,7 +2,6 @@ module Feedjira
   class Parser
     class RssEntry
       include SAXMachine
-      include FeedEntryUtilities
 
       element :title
       element :link, as: :url

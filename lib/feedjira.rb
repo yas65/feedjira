@@ -7,7 +7,6 @@ require 'feedjira/entry'
 require 'feedjira/fetcher'
 require 'feedjira/parser'
 
-require 'feedjira/feed_entry_utilities'
 require 'feedjira/feed_utilities'
 require 'feedjira/parser/rss_entry'
 require 'feedjira/parser/rss'
